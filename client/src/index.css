@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* QuestTrip — кислотный лайм на угольном фоне (по мотивам Questopia) */
+    --background: 0 0% 23%;
+    --foreground: 0 0% 93%;
+
+    --card: 0 0% 16%;
+    --card-foreground: 0 0% 93%;
+
+    --popover: 0 0% 16%;
+    --popover-foreground: 0 0% 93%;
+
+    --primary: 74 78% 58%;
+    --primary-foreground: 0 0% 8%;
+
+    --secondary: 0 0% 19%;
+    --secondary-foreground: 0 0% 72%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 52%;
+
+    --accent: 74 78% 58%;
+    --accent-foreground: 0 0% 8%;
+
+    --destructive: 0 62% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 13%;
+    --input: 0 0% 13%;
+    --ring: 74 78% 58%;
+
+    --radius: 0.625rem;
+
+    /* Custom tokens */
+    --surface-1: 0 0% 16%;
+    --surface-2: 0 0% 13%;
+    --surface-3: 0 0% 19%;
+    --text-muted: 0 0% 52%;
+    --quest-lime: 74 78% 58%;
+    --quest-orange: 28 90% 55%;
+    --quest-green: 152 55% 40%;
+    --quest-blue: 214 75% 55%;
+  }
+
+  .dark {
+    --background: 0 0% 23%;
+    --foreground: 0 0% 93%;
+    --card: 0 0% 16%;
+    --card-foreground: 0 0% 93%;
+    --popover: 0 0% 16%;
+    --popover-foreground: 0 0% 93%;
+    --primary: 74 78% 58%;
+    --primary-foreground: 0 0% 8%;
+    --secondary: 0 0% 19%;
+    --secondary-foreground: 0 0% 72%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 52%;
+    --accent: 74 78% 58%;
+    --accent-foreground: 0 0% 8%;
+    --destructive: 0 62% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 13%;
+    --input: 0 0% 13%;
+    --ring: 74 78% 58%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'Satoshi', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground)); }
+
+/* Glass effect */
+.glass {
+  background: hsl(var(--card) / 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Quest card gradients — обновлены под новую палитру */
+.quest-gradient-purple { background: linear-gradient(135deg, hsl(263 70% 12%), hsl(263 60% 22%)); }
+.quest-gradient-orange { background: linear-gradient(135deg, hsl(28 80% 13%), hsl(28 75% 24%)); }
+.quest-gradient-green  { background: linear-gradient(135deg, hsl(152 55% 10%), hsl(152 50% 20%)); }
+.quest-gradient-blue   { background: linear-gradient(135deg, hsl(214 75% 11%), hsl(214 65% 22%)); }
+.quest-gradient-default{ background: linear-gradient(135deg, hsl(0 0% 13%), hsl(74 40% 18%)); }
+
+/* Hero gradient — лайм вместо индиго */
+.hero-gradient {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, hsl(74 78% 20% / 0.35), transparent),
+              radial-gradient(ellipse 40% 40% at 80% 50%, hsl(28 80% 15% / 0.2), transparent);
+}
+
+/* Animated gradient border */
+@keyframes borderGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.glow-border {
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.35), 0 0 20px hsl(var(--primary) / 0.12);
+}
+
+/* Progress bar animation */
+@keyframes progressFill {
+  from { width: 0; }
+}
+.progress-animate { animation: progressFill 0.5s ease-out; }
